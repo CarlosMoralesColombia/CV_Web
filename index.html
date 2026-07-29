@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web_CM</title>
+    <link rel="stylesheet" href="estilo_cv.css">
+</head>
+
+<body>
+
+    <header>
+        <a class="download-btn" href="Archivo_CV/CV_CarlosMorales.pdf" download>Descarga CV</a>
+        <h1>PROYECTOS</h1>
+    </header>
+
+    <main>
+        <div class="sections-row">
+            <section class="section-left">
+                <p id="fecha-hora">Fecha y hora</p>
+                <p><strong>Creador:</strong> Carlos Morales.</p>
+                <p><strong>Email:</strong> carlosalbertomoralescastro@hotmail.com</p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/carlos-alberto-morales-castro"
+                        target="_blank"
+                        rel="noopener noreferrer">https://www.linkedin.com/in/carlos-alberto-morales-castro</a></p>
+                <br>
+                <h2>Indice</h2>
+                <ul id="project-list"></ul>
+            </section>
+            <section class="section-right">
+                <a id="visual-link" class="download-btn visual-btn" href="#" target="_blank" rel="noopener noreferrer"
+                    style="display:none;">Descargar</a>
+                <h2 id="selected-name">Selecciona un proyecto del indice.</h2>
+                <p id="selected-detail">El detalle del proyecto seleccionado aparecerá aquí.</p>
+                
+                <!-- incio de la Sección del Frame -->
+                    <div class="pdf-embed">
+                        <iframe id="pdfFrame" src="NoDisponible"
+                            title="Diapositiva 3 FIRR"></iframe>
+                    </div>
+                <!-- final de la Sección del Frame -->
+
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Carlos Morales</p>
+    </footer>
+
+<!-- Aca inicia la funcionalidad del proyecto. -->
+<!-- Aca inicia la funcionalidad del proyecto. -->
+    <script type="module">
+        import * as proyectosModule from './proyectos.js';
+
+        const projectList = document.getElementById('project-list');
+
+        const proyectos = Object.entries(proyectosModule)
+            .filter(([key, value]) => key.startsWith('proyecto') && value && typeof value === 'object')
+            .map(([_, value]) => value);
+
+        const selectedName = document.getElementById('selected-name');
+        const selectedDetail = document.getElementById('selected-detail');
+        const visualLink = document.getElementById('visual-link');
+        const pdfFrame = document.getElementById('pdfFrame');
+
+        proyectos.forEach((proyecto) => {
+            const li = document.createElement('li');
+            li.textContent = proyecto.nombre;
+            li.style.cursor = 'pointer';
+            
+            li.addEventListener('click', () => {
+                // Actualiza los textos y el enlace externo si existen en tu HTML
+                if (selectedName) selectedName.textContent = proyecto.nombre;
+                if (selectedDetail) selectedDetail.textContent = proyecto.detalle || 'Sin detalle disponible.';
+                
+                if (visualLink) {
+                    if (proyecto.enlace) {
+                        visualLink.href = proyecto.enlace;
+                        visualLink.style.display = 'inline-block';
+                    } else {
+                        visualLink.href = '#';
+                        visualLink.style.display = 'none';
+                    }
+                }
+
+                // Actualiza el iframe con el archivo PDF correspondiente al proyecto seleccionado
+                if (pdfFrame && proyecto.enlace) {
+                    pdfFrame.src = proyecto.enlace;
+                }
+            });
+            
+            projectList.appendChild(li);
+        });
+        
+        const fechaHoraElement = document.getElementById('fecha-hora');
+        function actualizarFechaHora() {
+            const ahora = new Date();
+            const fecha = ahora.toLocaleDateString('es-ES');
+            const hora = ahora.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            if (fechaHoraElement) {
+                fechaHoraElement.textContent = `Fecha: ${fecha} - Hora: ${hora}`;
+            }
+        }
+
+        actualizarFechaHora();
+        setInterval(actualizarFechaHora, 1000);
+    </script>
+</body>
+</html>

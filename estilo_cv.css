@@ -1,0 +1,181 @@
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    background-color: #f0f2f5;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Apariencia para el encabezado (header) */
+header {
+    position: relative;
+    background-color: #2c3e50;
+    color: #ffffff;
+    width: 100%;
+    /* Toma todo el ancho visible */
+    box-sizing: border-box;
+    /* Previene desbordamiento horizontal por el padding */
+    margin-top: 0;
+    /* CAMBIO: Se eliminó 2cm para pegarlo arriba correctamente */
+    padding: 2rem 1rem;
+    /* CAMBIO: Se cambiaron cm por rem para padding adaptable */
+    text-align: center;
+}
+
+header .download-btn {
+    position: absolute;
+    left: 2rem;
+    /* CAMBIO: Se ajustó posición en rem */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    color: #2c3e50;
+    border: none;
+    border-radius: 6px;
+    /* CAMBIO: Se cambió 0.3cm a píxeles */
+    padding: 0.6rem 1.2rem;
+    /* CAMBIO: Padding fluido */
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+header h1 {
+    margin: 0 0 0.5rem 0;
+    /* CAMBIO: Margen relativo */
+    font-size: 2rem;
+    /* CAMBIO: Se cambió 1.06cm a rem escalable */
+}
+
+
+header p {
+    margin: 0;
+    font-size: 1rem;
+    /* CAMBIO: Se cambió 0.47cm a tamaño legible */
+    color: #bdc3c7;
+}
+
+
+/* Apariencia para el contenido principal (main) */
+
+main {
+    width: 100%;
+    margin: 0;
+    padding: 0 1cm;
+    /* Margen externo general a la izquierda y derecha */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.sections-row {
+    display: flex;
+    flex-wrap: nowrap;
+    /* Mantiene ambas secciones juntas */
+    align-items: stretch;
+    /* Mantiene ambas secciones a la misma altura exactamente */
+    gap: 0.53cm;
+    /* Espacio entre la sección izquierda y derecha */
+    width: 100%;
+    /* Toma todo el ancho disponible hasta el margen */
+    margin: 0;
+}
+
+
+/* Apariencia para cada sección (section) */
+section {
+    background-color: #ffffff;
+    padding: 1cm;
+    margin-bottom: 0.53cm;
+    border-radius: 0.21cm;
+    box-shadow: 0 0.11cm 0.16cm rgba(0, 0, 0, 0.1);
+}
+
+.section-left {
+    flex: 0 0 8cm;
+    /* Mantiene un ancho base fijo o definido de la izquierda */
+    height: auto;
+    /* La altura se sincroniza automáticamente con la derecha */
+    margin-left: 0;
+    box-sizing: border-box;
+}
+
+
+.section-right {
+    position: relative;
+    flex: 1;
+    /* CLAVE: Crece dinámicamente y se estira hasta tocar el margen derecho */
+    width: 100%;
+    /* Ocupa el 100% del espacio restante */
+    height: auto;
+    /* Altura sincronizada con la izquierda */
+    box-sizing: border-box;
+}
+
+
+.section-right .visual-btn {
+    position: absolute;
+    right: 1cm;
+    top: 0.5cm;
+    display: inline-block;
+    background-color: #2c3e50;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.3cm;
+    padding: 0.4cm 0.8cm;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+section h2 {
+    color: #2980b9;
+    margin-top: 0;
+    border-bottom: 0.05cm solid #ecf0f1;
+    padding-bottom: 0.26cm;
+}
+
+.section-left ul li a {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Apariencia para el pie de página (footer) */
+
+footer {
+    background-color: #34495e;
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    /* CAMBIO: Garantiza 100% de ancho de pantalla */
+    box-sizing: border-box;
+    /* CAMBIO: Incluye padding dentro del ancho */
+    padding: 1.5rem 1rem;
+    /* CAMBIO: Se cambiaron cm por rem */
+    margin-top: 2rem;
+    /* CAMBIO: Separación fluida superior */
+    font-size: 0.85rem;
+    /* CAMBIO: Se cambió 0.34cm a rem */
+}
+
+
+/* nuevo codigo Frame*/
+.pdf-embed {
+    width: 100%;
+    max-width: 900px; /* Ajusta este valor según el ancho máximo que prefieras */
+    height: 600px;    /* Altura fija recomendada para visualizar PDFs correctamente */
+    margin: 0 auto;   /* Centra el contenedor horizontalmente */
+    border-radius: 8px;
+    overflow: hidden; /* Oculta cualquier desbordamiento y respeta el borde redondeado */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: añade una sombra sutil */
+}
+
+.pdf-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;     /* Elimina el borde predeterminado del navegador */
+}
