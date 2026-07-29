@@ -33,12 +33,11 @@
                     style="display:none;">Descargar</a>
                 <h2 id="selected-name">Selecciona un proyecto del indice.</h2>
                 <p id="selected-detail">El detalle del proyecto seleccionado aparecerá aquí.</p>
-                
+
                 <!-- incio de la Sección del Frame -->
-                    <div class="pdf-embed">
-                        <iframe id="pdfFrame" src="NoDisponible"
-                            title="Diapositiva 3 FIRR"></iframe>
-                    </div>
+                <div class="pdf-embed">
+                    <iframe id="pdfFrame" src="NoDisponible" title="Diapositiva 3 FIRR"></iframe>
+                </div>
                 <!-- final de la Sección del Frame -->
 
             </section>
@@ -49,8 +48,8 @@
         <p>&copy; 2026 - Carlos Morales</p>
     </footer>
 
-<!-- Aca inicia la funcionalidad del proyecto. -->
-<!-- Aca inicia la funcionalidad del proyecto. -->
+    <!-- Aca inicia la funcionalidad del proyecto. -->
+    <!-- Aca inicia la funcionalidad del proyecto. -->
     <script type="module">
         import * as proyectosModule from './proyectos.js';
 
@@ -69,12 +68,12 @@
             const li = document.createElement('li');
             li.textContent = proyecto.nombre;
             li.style.cursor = 'pointer';
-            
+
             li.addEventListener('click', () => {
                 // Actualiza los textos y el enlace externo si existen en tu HTML
                 if (selectedName) selectedName.textContent = proyecto.nombre;
                 if (selectedDetail) selectedDetail.textContent = proyecto.detalle || 'Sin detalle disponible.';
-                
+
                 if (visualLink) {
                     if (proyecto.enlace) {
                         visualLink.href = proyecto.enlace;
@@ -90,10 +89,10 @@
                     pdfFrame.src = proyecto.enlace;
                 }
             });
-            
+
             projectList.appendChild(li);
         });
-        
+
         const fechaHoraElement = document.getElementById('fecha-hora');
         function actualizarFechaHora() {
             const ahora = new Date();
@@ -113,4 +112,5 @@
         setInterval(actualizarFechaHora, 1000);
     </script>
 </body>
+
 </html>
